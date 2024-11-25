@@ -75,7 +75,7 @@ public class SecurityConfig {
                 csrf.disable()
         );
         http.authorizeHttpRequests((request) -> request
-                .requestMatchers("/register", "/", "/home").permitAll()
+                .requestMatchers("/register", "/", "/home","/authenticate").permitAll()
                 .anyRequest().authenticated()
         );
 

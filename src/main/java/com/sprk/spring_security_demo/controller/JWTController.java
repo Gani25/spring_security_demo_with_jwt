@@ -24,6 +24,10 @@ public class JWTController {
     // user name and password
     public String generateToken(@RequestBody AuthRequest authRequest){
 
+//        return jwtService.generateToken(authRequest);
+
+//        DB Auth -> User name and password we have to verify
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
 

@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -17,8 +18,8 @@ import io.jsonwebtoken.security.Keys;
 public class JWTService {
 
     // Secret Key
-    private final String SECRET_KEY = "6PQjHeO57UA8gYcnHFWAnA==";
-    // sprk_123
+    private final String SECRET_KEY = "dobpIz0BDIuIZsbAPAK2Zf2+0YkH98L90todZX2h9RY=";
+    // sprktechnologies_123
 
     public String generateToken(AuthRequest authRequest) {
         Map<String, Object> claims = new HashMap<>();
@@ -28,9 +29,10 @@ public class JWTService {
 
     private String createToken(String userName, Map<String, Object> claims) {
 
+
         return Jwts.builder()
                 .header().add(Map.of("alg", "HS256", "typ",
-                        "JWT"))
+                        "JWT", "org","sprk technologies"))
                 .and()
                 .claims(claims)
                 .subject(userName)
@@ -45,7 +47,6 @@ public class JWTService {
 
     private SecretKey getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-
         return Keys.hmacShaKeyFor(keyBytes);
     }
 }
